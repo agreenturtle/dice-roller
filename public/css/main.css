@@ -1,0 +1,91 @@
+body {
+  background-color: black;
+}
+.box {
+  background-color: #191970;
+  border: 1px;
+  border-color: black;
+  border-style: solid;
+  color: white;
+  display:inline-block;
+  margin: 10px;
+  padding: 15px;
+  padding-top:5px;
+  position: relative;
+  text-align: center;
+  top: 0px;
+  width: 70px;
+  word-wrap: break-word;
+  vertical-align:top;
+}
+
+.box:hover .remove-dice {
+  display:block;
+}
+.btn-dice {
+  background-color: rgba(73, 94, 111, 0.4);
+  border: 1px;
+  border-color: white;
+  border-left-width: thin;
+  border-style: groove;
+  color: white;
+  cursor: pointer;
+  font-size: 10px;
+  font-weight: 300;
+  height: 30px;
+  letter-spacing: 1px;
+  padding: 2px;
+  position: relative;
+  text-align: center;
+  text-transform: uppercase;
+  top: -2px;
+  width: 60px;
+}
+.btn-group {
+  margin: 15px;
+  padding: 15px;
+}
+.btn-roll {
+  background-color: rgba(73, 94, 111, 0.4);
+  border: 1px;
+  border-color: white;
+  border-style: solid;
+  color: white;
+  cursor: pointer;
+  font-size: 10px;
+  font-weight: 300;
+  height: 30px;
+  letter-spacing: 1px;
+  padding: 2px;
+  position: relative;
+  text-align: center;
+  text-transform: uppercase;
+  top: -2px;
+  width: 60px;
+}
+.dice-image {
+  position: relative;
+}
+.dice-table {
+  background-color: #006400;
+  padding: 15px;
+  margin: 15px;
+}
+.input-total {
+  background-color: rgba(73, 94, 111, 0.4);
+  border: 1px;
+  border-style:solid;
+  border-right: none;
+  color: white;
+  height: 30px;
+  position:relative;
+  width: 90px;
+  text-align: right;
+  top:-2px;
+}
+.remove-dice {
+  float: right;
+  color: red;
+  cursor: pointer;
+  display: none;
+}
