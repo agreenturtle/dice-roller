@@ -1,5 +1,5 @@
  var React = require('react');
  var ReactDOM = require('react-dom');
- var DiceManager = require('./components/DiceManager.jsx');
+ var DiceSet = require('./components/DiceSet.jsx');
 
- ReactDOM.render(<DiceManager  />, document.getElementById('app'));
+ ReactDOM.render(<DiceSet  />, document.getElementById('app'));

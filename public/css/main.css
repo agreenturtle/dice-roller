@@ -88,4 +88,7 @@ body {
   color: red;
   cursor: pointer;
   display: none;
+  position: absolute;
+  top: 3px;
+  right: 9px;
 }

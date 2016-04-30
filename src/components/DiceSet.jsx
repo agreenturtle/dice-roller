@@ -10,7 +10,7 @@ var images = {
   "20": "images/d20.png"
 }
 
-var DiceManager = React.createClass({
+var DiceSet = React.createClass({
   getInitialState: function(){
     return({items:[]});
   },
@@ -40,4 +40,4 @@ var DiceManager = React.createClass({
   }
 });
 
-module.exports = DiceManager;
+module.exports = DiceSet;

@@ -19368,41 +19368,49 @@ var Dice = React.createClass({
   displayName: 'Dice',
 
   getInitialState: function () {
-    return { value: '' };
+    return { value: '', showDice: true };
   },
   roll: function () {
     var value = Math.floor(Math.random() * parseInt(this.props.sides) + 1);
     this.setState({ value: value });
   },
+  removeDice: function (e) {
+    console.log("remove");
+    this.setState({ showDice: false });
+  },
   render: function () {
-    return React.createElement(
-      'div',
-      { className: 'box' },
-      React.createElement(
-        'h3',
-        { className: 'dice-title' },
-        ' 1D',
-        this.props.sides,
-        ' ',
+    if (this.state.showDice) {
+      return React.createElement(
+        'div',
+        { className: 'box' },
+        React.createElement(
+          'h3',
+          { className: 'dice-title' },
+          ' 1D',
+          this.props.sides,
+          ' ',
+          React.createElement(
+            'span',
+            { className: 'remove-dice', onClick: this.removeDice },
+            'x'
+          )
+        ),
+        React.createElement(
+          'div',
+          { className: 'dice-image' },
+          React.createElement('img', { src: this.props.image })
+        ),
+        React.createElement('br', null),
         React.createElement(
           'span',
-          { className: 'remove-dice' },
-          'x'
+          { className: 'dice-output' },
+          'Roll: ',
+          this.state.value
         )
-      ),
-      React.createElement(
-        'div',
-        { className: 'dice-image' },
-        React.createElement('img', { src: this.props.image })
-      ),
-      React.createElement('br', null),
-      React.createElement(
-        'span',
-        { className: 'dice-output' },
-        'Roll: ',
-        this.state.value
-      )
-    );
+      );
+    } else {
+      return React.createElement('span', null);
+    }
   }
 });
 
@@ -19421,8 +19429,8 @@ var images = {
   "20": "images/d20.png"
 };
 
-var DiceManager = React.createClass({
-  displayName: 'DiceManager',
+var DiceSet = React.createClass({
+  displayName: 'DiceSet',
 
   getInitialState: function () {
     return { items: [] };
@@ -19483,7 +19491,7 @@ var DiceManager = React.createClass({
   }
 });
 
-module.exports = DiceManager;
+module.exports = DiceSet;
 
 },{"./DiceTable.jsx":168,"react":164}],168:[function(require,module,exports){
 var React = require('react');
@@ -19523,8 +19531,8 @@ module.exports = DiceTable;
 },{"./Dice.jsx":166,"react":164}],169:[function(require,module,exports){
 var React = require('react');
 var ReactDOM = require('react-dom');
-var DiceManager = require('./components/DiceManager.jsx');
+var DiceSet = require('./components/DiceSet.jsx');
 
-ReactDOM.render(React.createElement(DiceManager, null), document.getElementById('app'));
+ReactDOM.render(React.createElement(DiceSet, null), document.getElementById('app'));
 
-},{"./components/DiceManager.jsx":167,"react":164,"react-dom":1}]},{},[169]);
+},{"./components/DiceSet.jsx":167,"react":164,"react-dom":1}]},{},[169]);
