@@ -18,9 +18,26 @@ body {
   word-wrap: break-word;
   vertical-align:top;
 }
-
 .box:hover .remove-dice {
   display:block;
+}
+.btn-create-set {
+  background-color: rgba(73, 94, 111, 0.4);
+  border: 1px;
+  border-color: white;
+  border-left-width: thin;
+  border-style: solid;
+  color: white;
+  cursor: pointer;
+  font-size: 10px;
+  font-weight: 300;
+  height: 30px;
+  letter-spacing: 1px;
+  padding: 2px;
+  position: relative;
+  text-align: center;
+  text-transform: uppercase;
+  width: 60px;
 }
 .btn-dice {
   background-color: rgba(73, 94, 111, 0.4);
@@ -42,8 +59,9 @@ body {
   width: 60px;
 }
 .btn-group {
-  margin: 15px;
-  padding: 15px;
+  margin: 0px;
+  margin-bottom:10px;
+  padding: 0px;
 }
 .btn-roll {
   background-color: rgba(73, 94, 111, 0.4);
@@ -66,10 +84,27 @@ body {
 .dice-image {
   position: relative;
 }
-.dice-table {
+.dice-set {
   background-color: #006400;
+  border: 1px;
+  border-style: solid;
+  border-color: white;
   padding: 15px;
   margin: 15px;
+}
+.dice-set:hover .remove-set {
+  display:block;
+}
+.input-set-name {
+  background-color: rgba(73, 94, 111, 0.4);
+  border: 1px;
+  border-style:solid;
+  border-right: none;
+  color: white;
+  height: 30px;
+  position:relative;
+  width: 200px;
+  text-align: center;
 }
 .input-total {
   background-color: rgba(73, 94, 111, 0.4);
@@ -91,4 +126,24 @@ body {
   position: absolute;
   top: 3px;
   right: 9px;
+}
+.remove-set {
+  color: red;
+  cursor: pointer;
+  display: none;
+  float:right;
+}
+.set-title {
+  background-color: rgba(73, 94, 111, 0.4);
+  border: 1px;
+  border-style:solid;
+  color: white;
+  height: 30px;
+  letter-spacing: 1px;
+  margin-bottom: 10px;
+  position:relative;
+  width: 200px;
+  text-align: center;
+  text-transform: uppercase;
+  top:-2px;
 }

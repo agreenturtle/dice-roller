@@ -19418,87 +19418,10 @@ module.exports = Dice;
 
 },{"react":164}],167:[function(require,module,exports){
 var React = require('react');
-var DiceTable = require('./DiceTable.jsx');
-
-var images = {
-  "4": "images/d4.png",
-  "6": "images/d6.png",
-  "8": "images/d8.png",
-  "10": "images/d10.png",
-  "12": "images/d12.png",
-  "20": "images/d20.png"
-};
+var Dice = require('./Dice.jsx');
 
 var DiceSet = React.createClass({
   displayName: 'DiceSet',
-
-  getInitialState: function () {
-    return { items: [] };
-  },
-  addDice: function (e) {
-    var currentItems = this.state.items;
-    currentItems.push({ sides: e.target.value, image: images[e.target.value] });
-    this.setState({ items: currentItems });
-  },
-  clear: function () {
-    this.setState({ items: [] });
-  },
-  render: function () {
-    return React.createElement(
-      'div',
-      null,
-      React.createElement(
-        'div',
-        { className: 'btn-group' },
-        React.createElement(
-          'button',
-          { className: 'btn-dice', onClick: this.addDice, value: '4' },
-          ' D4 '
-        ),
-        React.createElement(
-          'button',
-          { className: 'btn-dice', onClick: this.addDice, value: '6' },
-          ' D6 '
-        ),
-        React.createElement(
-          'button',
-          { className: 'btn-dice', onClick: this.addDice, value: '8' },
-          ' D8 '
-        ),
-        React.createElement(
-          'button',
-          { className: 'btn-dice', onClick: this.addDice, value: '10' },
-          ' D10 '
-        ),
-        React.createElement(
-          'button',
-          { className: 'btn-dice', onClick: this.addDice, value: '12' },
-          ' D12 '
-        ),
-        React.createElement(
-          'button',
-          { className: 'btn-dice', onClick: this.addDice, value: '20' },
-          ' D20 '
-        ),
-        React.createElement(
-          'button',
-          { className: 'btn-dice', onClick: this.clear },
-          ' Clear '
-        )
-      ),
-      React.createElement(DiceTable, { items: this.state.items })
-    );
-  }
-});
-
-module.exports = DiceSet;
-
-},{"./DiceTable.jsx":168,"react":164}],168:[function(require,module,exports){
-var React = require('react');
-var Dice = require('./Dice.jsx');
-
-var DiceTable = React.createClass({
-  displayName: 'DiceTable',
 
   getInitialState: function () {
     return { totalValue: 0 };
@@ -19514,7 +19437,7 @@ var DiceTable = React.createClass({
     };
     return React.createElement(
       'div',
-      { className: 'dice-table' },
+      null,
       React.createElement(
         'button',
         { className: 'btn-roll', onClick: this.roll },
@@ -19526,13 +19449,163 @@ var DiceTable = React.createClass({
   }
 });
 
-module.exports = DiceTable;
+module.exports = DiceSet;
 
-},{"./Dice.jsx":166,"react":164}],169:[function(require,module,exports){
+},{"./Dice.jsx":166,"react":164}],168:[function(require,module,exports){
+var React = require('react');
+var DiceSet = require('./DiceSet.jsx');
+
+var images = {
+  "4": "images/d4.png",
+  "6": "images/d6.png",
+  "8": "images/d8.png",
+  "10": "images/d10.png",
+  "12": "images/d12.png",
+  "20": "images/d20.png"
+};
+
+var DiceSetManager = React.createClass({
+  displayName: 'DiceSetManager',
+
+  getInitialState: function () {
+    return { items: [], setName: this.props.setName, showSet: true };
+  },
+  addDice: function (e) {
+    var currentItems = this.state.items;
+    currentItems.push({ sides: e.target.value, image: images[e.target.value] });
+    this.setState({ items: currentItems });
+  },
+  clear: function () {
+    this.setState({ items: [] });
+  },
+  editTitle: function (e) {
+    this.setState({ setName: e.target.value });
+  },
+  removeSet: function (e) {
+    this.setState({ showSet: false });
+  },
+  render: function () {
+    if (this.state.showSet) {
+      return React.createElement(
+        'div',
+        { className: 'dice-set' },
+        React.createElement(
+          'span',
+          { className: 'remove-set', onClick: this.removeSet },
+          ' X '
+        ),
+        React.createElement('input', { className: 'set-title', onChange: this.editTitle, placeholder: 'Dice Set Name', value: this.state.setName }),
+        React.createElement(
+          'div',
+          { className: 'btn-group' },
+          React.createElement(
+            'button',
+            { className: 'btn-dice', onClick: this.addDice, value: '4' },
+            ' D4 '
+          ),
+          React.createElement(
+            'button',
+            { className: 'btn-dice', onClick: this.addDice, value: '6' },
+            ' D6 '
+          ),
+          React.createElement(
+            'button',
+            { className: 'btn-dice', onClick: this.addDice, value: '8' },
+            ' D8 '
+          ),
+          React.createElement(
+            'button',
+            { className: 'btn-dice', onClick: this.addDice, value: '10' },
+            ' D10 '
+          ),
+          React.createElement(
+            'button',
+            { className: 'btn-dice', onClick: this.addDice, value: '12' },
+            ' D12 '
+          ),
+          React.createElement(
+            'button',
+            { className: 'btn-dice', onClick: this.addDice, value: '20' },
+            ' D20 '
+          ),
+          React.createElement(
+            'button',
+            { className: 'btn-dice', onClick: this.clear },
+            ' Clear '
+          )
+        ),
+        React.createElement(DiceSet, { items: this.state.items })
+      );
+    } else {
+      return React.createElement('span', null);
+    }
+  }
+});
+
+module.exports = DiceSetManager;
+
+},{"./DiceSet.jsx":167,"react":164}],169:[function(require,module,exports){
+var React = require('react');
+var DiceSetManager = require('./DiceSetManager.jsx');
+
+var SetList = React.createClass({
+  displayName: 'SetList',
+
+  render: function () {
+    var createSets = function (obj, index) {
+      return React.createElement(DiceSetManager, { key: obj.setName + index, setName: obj.setName });
+    };
+
+    return React.createElement(
+      'div',
+      null,
+      this.props.sets.map(createSets)
+    );
+  }
+});
+
+module.exports = SetList;
+
+},{"./DiceSetManager.jsx":168,"react":164}],170:[function(require,module,exports){
+var React = require('react');
+var SetList = require('./SetList.jsx');
+
+var SetListManager = React.createClass({
+  displayName: 'SetListManager',
+
+  getInitialState: function () {
+    return { sets: [], value: '' };
+  },
+  onChange: function (e) {
+    this.setState({ value: e.target.value });
+  },
+  createNewDiceSet(e) {
+    var currentSets = this.state.sets;
+    currentSets.push({ setName: this.state.value });
+    this.setState({ sets: currentSets, value: '' });
+  },
+  render: function () {
+    return React.createElement(
+      'div',
+      null,
+      React.createElement('input', { className: 'input-set-name', placeholder: 'Enter Dice Set Name', value: this.state.value, onChange: this.onChange }),
+      React.createElement(
+        'button',
+        { className: 'btn-create-set', onClick: this.createNewDiceSet },
+        ' Add '
+      ),
+      React.createElement(SetList, { sets: this.state.sets })
+    );
+  }
+});
+
+module.exports = SetListManager;
+
+},{"./SetList.jsx":169,"react":164}],171:[function(require,module,exports){
 var React = require('react');
 var ReactDOM = require('react-dom');
-var DiceSet = require('./components/DiceSet.jsx');
+var SetListManager = require('./components/SetListManager.jsx');
 
-ReactDOM.render(React.createElement(DiceSet, null), document.getElementById('app'));
+ReactDOM.render(React.createElement(SetListManager, null), document.getElementById('app'));
 
-},{"./components/DiceSet.jsx":167,"react":164,"react-dom":1}]},{},[169]);
+},{"./components/SetListManager.jsx":170,"react":164,"react-dom":1}]},{},[171]);
