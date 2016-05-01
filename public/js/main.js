@@ -19456,12 +19456,12 @@ var React = require('react');
 var DiceSet = require('./DiceSet.jsx');
 
 var images = {
-  "4": "images/d4.png",
-  "6": "images/d6.png",
-  "8": "images/d8.png",
-  "10": "images/d10.png",
-  "12": "images/d12.png",
-  "20": "images/d20.png"
+  "4": "public/images/d4.png",
+  "6": "public/images/d6.png",
+  "8": "public/images/d8.png",
+  "10": "public/images/d10.png",
+  "12": "public/images/d12.png",
+  "20": "public/images/d20.png"
 };
 
 var DiceSetManager = React.createClass({
